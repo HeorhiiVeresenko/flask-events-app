@@ -1,0 +1,213 @@
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+}
+
+/* ===== CONTAINER ===== */
+.container_main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.header_main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
+.header_user_actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.header_main span {
+    font-weight: bold;
+}
+
+/* ===== TITLE ===== */
+.title_main {
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* ===== ADD BUTTON ===== */
+.add_btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: white;
+    color: #667eea;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add_btn:hover {
+    background: #f1f1f1;
+}
+
+/* ===== EVENTS GRID ===== */
+.events_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ===== CARD ===== */
+.event_card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== TEXT ===== */
+.event_card h2 {
+    margin-top: 0;
+}
+
+.event_card p {
+    margin: 8px 0;
+}
+
+/* ===== LINKS ===== */
+.card_link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #667eea;
+    text-decoration: none;
+}
+
+.card_link:hover {
+    text-decoration: underline;
+}
+
+/* ===== ACTIONS ===== */
+.card_actions {
+    margin-top: 10px;
+}
+
+.card_actions a,
+.card_actions button {
+    margin-right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ===== DELETE BUTTON ===== */
+.card_actions button {
+    border: none;
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.card_actions button:hover {
+    background: #e05555;
+}
+/* ===== Search ===== */
+.search_section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search_section form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.search_section input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search_section input[type="text"] {
+    flex: 2; 
+    min-width: 150px;
+}
+
+.search_section input[type="date"] {
+    flex: 1;
+    min-width: 130px;
+}
+
+.search_section input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.search_section button {
+    background: white;
+    color: #667eea; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_section button:hover {
+    background: #f1f1f1;
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.search_section a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.search_section a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header_main {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .header_user_actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .search_section form {
+        flex-direction: column; /* На телефонах пошук стає в стовпчик */
+        align-items: stretch;
+    }
+
+    .search_section input, 
+    .search_section button {
+        width: 100%; 
+    }
+    
+    .search_section a {
+        text-align: center;
+        margin-top: 5px;
+    }
+}

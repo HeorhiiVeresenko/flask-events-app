@@ -1,0 +1,103 @@
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ===== CONTAINER ===== */
+.container_event {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CARD ===== */
+.card_event {
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== TITLE ===== */
+.title_event {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* ===== FORM ===== */
+.form_event {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== GROUP ===== */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LABEL ===== */
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* ===== INPUT & TEXTAREA ===== */
+.input_event {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* ===== BUTTON ===== */
+.btn_event {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn_event:hover {
+    background: #5a67d8;
+}
+
+/* ===== LINK ===== */
+.link_event {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #667eea;
+    text-decoration: none;
+}
+
+.link_event:hover {
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+    .card_event {
+        padding: 20px;
+    }
+
+    .title_event {
+        font-size: 22px;
+    }
+}

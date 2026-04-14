@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_event.css') }}">
+</head>
+<body>
+
+<div class="container_event">
+    <div class="card_event">
+        <h1 class="title_event">Редагувати подію</h1>
+
+        <form method="POST" class="form_event">
+            <input type="text" name="title" value="{{ event.title }}" required class="input_event">
+
+            <textarea name="description" required class="input_event">
+                {{ event.description }}
+            </textarea>
+
+            <input type="datetime-local"
+                   name="event_date"
+                   value="{{ event.event_date.strftime('%Y-%m-%dT%H:%M') }}"
+                   required
+                   class="input_event">
+
+            <button type="submit" class="btn_event">Зберегти</button>
+        </form>
+
+        <a href="{{ url_for('event_detail', event_id=event.id) }}" class="link_event">Назад</a>
+    </div>
+</div>
+</body>
+</html>

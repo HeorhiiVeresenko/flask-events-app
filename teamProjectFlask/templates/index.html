@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Life Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <div class="container_main">
+
+        <div class="header_main">
+            <h2 class="title_main">School Life Hub</h2>
+    
+            <div>
+                {% if session.user_id %}
+                    <span style="color:white; margin-right: 10px;">{{ session.user_name }}</span>
+                    <a href="/logout" style="color: #ff4d4d;">Logout</a>
+                {% else %}
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    
+        <h1 class="title_main">Події</h1>
+    
+        <a href="{{ url_for('add_event') }}" class="add_btn">
+            ➕ Створити подію
+        </a>
+
+        <div class="search_section" style="margin: 20px 0; padding: 15px; background: #f4f4f4; border-radius: 8px; border: 1px solid #ddd;">
+            <form action="/" method="GET" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                <input type="text" name="search" placeholder="Пошук за назвою..." 
+                       value="{{ request.args.get('search', '') }}" 
+                       style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; flex: 1; min-width: 200px;">
+                
+                <input type="date" name="date" 
+                       value="{{ request.args.get('date', '') }}" 
+                       style="padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+                
+                <button type="submit" >
+                    Знайти
+                </button>
+                
+                <a href="/" style="text-decoration: none; color: #666; font-size: 14px; padding-left: 5px;">Скинути фільтри</a>
+            </form>
+        </div>
+    
+        <div class="events_grid">
+            {% for event in events %}
+                <div class="event_card">
+                    <h2>{{ event.title }}</h2>
+                    <p>{{ event.description[:100] }}{% if event.description|length > 100 %}...{% endif %}</p>
+                    <p><b>Дата:</b> {{ event.event_date }}</p>
+        
+                    <a href="{{ url_for('event_detail', event_id=event.id) }}" class="card_link">
+                        Детальніше
+                    </a>
+        
+                    {% if session.get('user_id') == event.author_id %}
+                    <div class="card_actions" style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+                        <a href="{{ url_for('edit_event', event_id=event.id) }}" style="margin-right: 10px; text-decoration: none;">✏️ Редагувати</a>
+        
+                        <form action="{{ url_for('delete_event', event_id=event.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" style="background:none; border:none; color: #d9534f; cursor:pointer; padding:0; font-family: inherit;">
+                                🗑️ Видалити
+                            </button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">
+                    <h3>Подій не знайдено</h3>
+                    <p>Спробуйте змінити параметри пошуку або створіть нову подію.</p>
+                </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ===== CONTAINER ===== */
+.container_detail {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ===== CARD ===== */
+.card_detail {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== TITLE ===== */
+.title_detail {
+    margin-top: 0;
+}
+
+/* ===== TEXT ===== */
+.text_detail {
+    margin: 10px 0;
+}
+
+/* ===== SECTION ===== */
+.section {
+    margin-top: 25px;
+}
+
+/* ===== LIST ===== */
+.list {
+    padding-left: 20px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #5a67d8;
+}
+
+/* ===== DELETE ===== */
+.btn_delete {
+    background: #ff6b6b;
+}
+
+.btn_delete:hover {
+    background: #e05555;
+}
+
+/* ===== INPUT ===== */
+.input_comment {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ===== LINK ===== */
+.link_back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #667eea;
+    text-decoration: none;
+}
+
+.link_back:hover {
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .card_detail {
+        padding: 20px;
+    }
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{event.title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='event.css') }}">
+</head>
+<body>
+    <div class="container_detail">
+        <div class="card_detail">
+    
+            <h1 class="title_detail">{{ event.title }}</h1>
+    
+            <p class="text_detail">{{ event.description }}</p>
+            <p class="text_detail"><b>Дата:</b> {{ event.event_date }}</p>
+            <p class="text_detail"><b>Автор:</b> {{ event.author.name }}</p>
+    
+            <!-- Participants -->
+            <div class="section">
+                <h2>Participants</h2>
+                <ul class="list">
+                    {% for user in event.participants %}
+                        <li>{{ user.name }} ({{ user.user_class }})</li>
+                    {% else %}
+                        <li>No participants on this event!</li>
+                    {% endfor %}
+                </ul>
+    
+                {% if session.get('user_id') %}
+                <div class="flex">
+                    <form method="POST" action="{{ url_for('register_for_event', event_id=event.id) }}">
+                        <button class="btn">Записатися</button>
+                    </form>
+                    {% endif %}
+        
+                    <form method="POST" action="{{ url_for('leave_event', event_id=event.id) }}">
+                        <button class="btn">Вийти</button>
+                    </form>
+                </div>
+                
+            </div>
+    
+            <!-- Comments -->
+            <div class="section">
+                <h3>Коментарі</h3>
+                <ul class="list">
+                    {% for c in event.comments %}
+                        <li><b>{{ c.user.name }}:</b> {{ c.text }}</li>
+                    {% else %}
+                        <li>Немає коментарів</li>
+                    {% endfor %}
+                </ul>
+    
+                {% if session.get('user_id') %}
+                <form method="POST" action="{{ url_for('add_comment', event_id=event.id) }}">
+                    <input type="text" name="text" placeholder="Коментар" class="input_comment">
+                    <button class="btn">Додати</button>
+                </form>
+                {% endif %}
+            </div>
+    
+            <!-- Author actions -->
+            {% if session.get('user_id') == event.author_id %}
+            <div class="flex">
+                <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn">✏️ Редагувати</a>
+    
+                <form method="POST" action="{{ url_for('delete_event', event_id=event.id) }}">
+                    <button class="btn btn_delete">🗑️ Видалити</button>
+                </form>
+            </div>
+            {% endif %}
+    
+            <a href="{{ url_for('index') }}" class="link_back">← Назад</a>
+    
+        </div>
+    </div>
+</body>
+</html>
